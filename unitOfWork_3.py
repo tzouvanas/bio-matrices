@@ -1,6 +1,6 @@
 import numpy as np 
-from BioMatrix import DynamicProgrammingMatrix
-from BioMatrix import WeightMatrix
+from DynamicProgrammingMatrix import DynamicProgrammingMatrix
+from WeightMatrix import WeightMatrix
 from Blosum import blosum50
 
 #xSeq = ['A', 'A', 'G' ,'T' , 'T', 'A', 'G', 'C', 'A', 'G']

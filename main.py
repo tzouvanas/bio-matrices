@@ -1,5 +1,5 @@
 from unitOfWork_3 import UnitOfWork_3
-from BioMatrix import DynamicProgrammingMatrix
+from DynamicProgrammingMatrix import DynamicProgrammingMatrix
 
 erg_3 = UnitOfWork_3() 
 erg_3.go()
