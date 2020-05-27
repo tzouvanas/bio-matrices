@@ -7,7 +7,7 @@ from Blosum import blosum50
 #ySeq = ['C', 'A', 'G' ,'T' , 'A', 'T', 'C', 'G', 'C', 'A']
 #d = 1
 
-class UnitOfWork_3:
+class erg3:
 
     def go(self):
 
