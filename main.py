@@ -1,5 +1,5 @@
 from UnitsOfWork import erg3
-from DynamicProgrammingMatrix import DynamicProgrammingMatrix
+from matrices.DynamicProgrammingMatrix import DynamicProgrammingMatrix
 
 ergasia = erg3() 
 ergasia.go()
