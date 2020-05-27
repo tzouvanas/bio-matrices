@@ -34,22 +34,22 @@ class erg3:
         dm.print_origins_of(7, 10)
 
         wm = WeightMatrix()
-        wm.addSequence("TATAGA")
-        wm.addSequence("TATAAA")
-        wm.addSequence("TATAGA")
-        wm.addSequence("TATAAA")
-        wm.addSequence("GATAGT")
-        wm.addSequence("TATAAT")
-        wm.addSequence("TATAAT")
-        wm.addSequence("TATAGT")
+        wm.add_sequence("TATAGA")
+        wm.add_sequence("TATAAA")
+        wm.add_sequence("TATAGA")
+        wm.add_sequence("TATAAA")
+        wm.add_sequence("GATAGT")
+        wm.add_sequence("TATAAT")
+        wm.add_sequence("TATAAT")
+        wm.add_sequence("TATAGT")
         wm.update()
         wm.print() 
 
-        wm.printScore("TATAAA")
+        wm.print_score("TATAAA")
 
-        wm.printScore("GATAAA")
+        wm.print_score("GATAAA")
 
-        wm.printScore("TAATAA")
+        wm.print_score("TAATAA")
 
 
 

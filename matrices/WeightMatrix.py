@@ -8,7 +8,7 @@ class WeightMatrix:
         self.m_probabilities = []
         self.m_pssm = []
 
-    def __nucleotideToIndex(self, nucleotide):
+    def __nucleotide_to_index(self, nucleotide):
         
         if nucleotide == 'A':
             return 0
@@ -20,7 +20,7 @@ class WeightMatrix:
             return 3
         return -1
 
-    def __countOccurenciesForColumn(self, column):
+    def __count_occurencies_for_column(self, column):
         result = []
         result.append(column.count('A'))
         result.append(column.count('T'))
@@ -34,12 +34,12 @@ class WeightMatrix:
         temp_counts = []
         for j in range(0, nrOfColumns):
             column = list(self.m[:,j])
-            column_counts = self.__countOccurenciesForColumn(column)
+            column_counts = self.__count_occurencies_for_column(column)
             temp_counts.append(column_counts)
         
         self.m_counts = np.transpose(temp_counts)
 
-    def addSequence(self, sequence):
+    def add_sequence(self, sequence):
 
         if self.m is None:
             self.m = list(sequence)
@@ -61,13 +61,13 @@ class WeightMatrix:
         self.m_pssm = temp_pssm
     
 
-    def printScore(self, sequence):
+    def print_score(self, sequence):
         score = 0
         columnIndex = 0
         nucleotides = list(sequence)
 
         for nucleotide in list(nucleotides):
-            index = self.__nucleotideToIndex(nucleotide)
+            index = self.__nucleotide_to_index(nucleotide)
             score = score + self.m_pssm[index][columnIndex]
             columnIndex = columnIndex + 1
 

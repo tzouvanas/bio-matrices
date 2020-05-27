@@ -96,7 +96,7 @@ class DynamicProgrammingMatrix:
         for j in range(0, len(countArray)):
             lists.append(list(range(0, countArray[j])))
         
-        result = MathTools.CartesianOfMany(lists)
+        result = MathTools.cartesian_of_many(lists)
 
         return result
 
