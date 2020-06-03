@@ -1,6 +1,6 @@
 import numpy as np 
 from matrices.DynamicProgrammingMatrix import DynamicProgrammingMatrix
-from matrices.WeightMatrix import PositionWeightMatrix
+from matrices.PositionWeightMatrix import PositionWeightMatrix
 from Blosum import blosum50
 
 #xSeq = ['A', 'A', 'G' ,'T' , 'T', 'A', 'G', 'C', 'A', 'G']
