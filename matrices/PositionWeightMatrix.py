@@ -28,7 +28,7 @@ class PositionWeightMatrix:
         result.append(column.count('C'))
         return result
 
-    def __count_Frequencies(self):
+    def __count_frequencies(self):
         nrOfColumns = len(self.m[0])
 
         temp_counts = []
@@ -49,7 +49,7 @@ class PositionWeightMatrix:
     def update(self):   
         
         # frequencies
-        self.__count_Frequencies()
+        self.__count_frequencies()
 
         # propabilities
         self.position_probability_matrix = np.divide(self.position_frequency_matrix, len(self.m))
@@ -60,7 +60,7 @@ class PositionWeightMatrix:
         temp_position_weight_matrix = np.round(temp_position_weight_matrix, 3)
         self.position_weight_matrix = temp_position_weight_matrix
 
-    def print_score(self, sequence):
+    def score(self, sequence):
         score = 0
         columnIndex = 0
         nucleotides = list(sequence)
@@ -70,16 +70,17 @@ class PositionWeightMatrix:
             score = score + self.position_weight_matrix[index][columnIndex]
             columnIndex = columnIndex + 1
 
-        print(sequence, ' : ', score)
+    def print_score(self, sequence):
+        print(sequence, ' : ', self.score(sequence))
         print('\n')
 
     def print(self):    
-        print('Counters:')
+        print('Frequencies:')
         print(self.position_frequency_matrix)
         print('\n')
         print('Propabilities:')
         print(self.position_probability_matrix)
         print('\n')
-        print('PSSM:')
+        print('Weights:')
         print(self.position_weight_matrix)
         print('\n')
