@@ -1,6 +1,6 @@
 import numpy as np 
 from matrices.DynamicProgrammingMatrix import DynamicProgrammingMatrix
-from matrices.WeightMatrix import WeightMatrix
+from matrices.WeightMatrix import PositionWeightMatrix
 from Blosum import blosum50
 
 #xSeq = ['A', 'A', 'G' ,'T' , 'T', 'A', 'G', 'C', 'A', 'G']
@@ -33,7 +33,7 @@ class erg3:
         dm.printMatrix()
         dm.print_origins_of(7, 10)
 
-        wm = WeightMatrix()
+        wm = PositionWeightMatrix()
         wm.add_sequence("TATAGA")
         wm.add_sequence("TATAAA")
         wm.add_sequence("TATAGA")
