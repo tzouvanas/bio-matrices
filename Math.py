@@ -3,7 +3,7 @@ import numpy as np
 class MathTools:
 
     @staticmethod
-    def transpose(array):
+    def transpose(array: list):
 
         newArray = []
         for element in array:
@@ -12,7 +12,7 @@ class MathTools:
         return newArray
 
     @staticmethod
-    def cartesian_of_two(arrayA, arrayB):
+    def cartesian_of_two(arrayA: list, arrayB: list):
 
         result = []
         for row_of_a in arrayA:
@@ -23,7 +23,7 @@ class MathTools:
         return result
 
     @staticmethod
-    def cartesian_of_many(arrays):
+    def cartesian_of_many(arrays:list):
 
         if len(arrays) == 1:
             return MathTools.transpose(arrays[0])

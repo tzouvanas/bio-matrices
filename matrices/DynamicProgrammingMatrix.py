@@ -70,12 +70,12 @@ class DynamicProgrammingMatrix:
         else:
             maxResult =  max(upleft, left, up)
 
-        self.__registerOrigin(upleft, left, up, maxResult, i, j)
+        self.__register_origin(upleft, left, up, maxResult, i, j)
 
         return maxResult
 
     # records originator / originators of cell's max value
-    def __registerOrigin(self, upleft, left, up, maxValue, i, j):
+    def __register_origin(self, upleft, left, up, maxValue, i, j):
 
         origin = []
 
@@ -100,12 +100,12 @@ class DynamicProgrammingMatrix:
 
         return result
 
-    def __permutate_Origins(self, permutationIndexRow):
+    def __permutate_origins(self, permutationIndexRow):
         
         permutatedOrigin = self.origins.copy()
         
         seq = 0
-        for permutation_cell in self.permutationCells:
+        for permutation_cell in self.__permutationCells:
             permutatedOrigin[permutation_cell] = [permutatedOrigin[permutation_cell][int(permutationIndexRow[seq])]]
             seq = seq + 1
         
@@ -121,7 +121,7 @@ class DynamicProgrammingMatrix:
                 return
 
             if len(nodes) > 1:
-                self.permutationCells.append((i,j))
+                self.__permutationCells.append((i,j))
 
             for node in nodes:
                 if (node != (0,0)):
@@ -154,7 +154,7 @@ class DynamicProgrammingMatrix:
             for j in range(1, self.nrOfColumns):
                 self.m[i][j] = self.__calculateMaxValueForCell(i, j)
 
-    def printMatrix(self):
+    def print_matrix(self):
         print('Dynamic Programming Matrix:')
         print(self.m)
         print('\n')
@@ -162,12 +162,12 @@ class DynamicProgrammingMatrix:
     def print_origins_of(self, i, j):
         
         # find cells that cause permutations
-        self.permutationCells = []
+        self.__permutationCells = []
         self.__find_permutations_of_cell(i, j)
 
         # record nr of permutations per cell
         nrOfnodesPerPermutationCell = []
-        for permutationCell in self.permutationCells:
+        for permutationCell in self.__permutationCells:
             nrOfnodesPerPermutationCell.append(len(self.origins[permutationCell]))
             
         # create permutation index table
@@ -180,7 +180,7 @@ class DynamicProgrammingMatrix:
         else:
             # create permutations of origins
             for permutationIndexRow in permutationIndexTable:
-                permutatedOrigin = self.__permutate_Origins(permutationIndexRow)
+                permutatedOrigin = self.__permutate_origins(permutationIndexRow)
                 self.__permutated_origins.append(permutatedOrigin)
                     
         self.permutation_origin_path = []

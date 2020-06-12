@@ -16,7 +16,7 @@ class erg3:
 
         dm = DynamicProgrammingMatrix(xSeq, ySeq, 2)
         dm.update()
-        dm.printMatrix()
+        dm.print_matrix()
         dm.print_origins_of(5, 6)
 
         xSeq = "HEAGAWGHEE"
@@ -24,13 +24,13 @@ class erg3:
         dm = DynamicProgrammingMatrix(xSeq, ySeq, 6)
         dm.setSubstitutionMatrix(blosum50)
         dm.update()
-        dm.printMatrix()
+        dm.print_matrix()
         dm.print_origins_of(7, 10)
 
         dm = DynamicProgrammingMatrix(xSeq, ySeq, 6, True)
         dm.setSubstitutionMatrix(blosum50)
         dm.update()
-        dm.printMatrix()
+        dm.print_matrix()
         dm.print_origins_of(7, 10)
 
         wm = PositionWeightMatrix()
