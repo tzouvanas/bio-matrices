@@ -3,15 +3,6 @@ import numpy as np
 class MathTools:
 
     @staticmethod
-    def transpose(array: list):
-
-        newArray = []
-        for element in array:
-            newArray.append([element])
-
-        return newArray
-
-    @staticmethod
     def cartesian_of_two(arrayA: list, arrayB: list):
 
         result = []
@@ -24,9 +15,6 @@ class MathTools:
 
     @staticmethod
     def cartesian_of_many(arrays:list):
-
-        if len(arrays) == 1:
-            return MathTools.transpose(arrays[0])
 
         cartesian_so_far = None
         

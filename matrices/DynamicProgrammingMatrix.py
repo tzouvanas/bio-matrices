@@ -96,6 +96,9 @@ class DynamicProgrammingMatrix:
         for j in range(0, len(countArray)):
             lists.append(list(range(0, countArray[j])))
         
+        if (len(lists) == 1):
+            return np.transpose(lists)
+
         result = MathTools.cartesian_of_many(lists)
 
         return result
