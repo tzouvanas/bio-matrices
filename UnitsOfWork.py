@@ -46,9 +46,7 @@ class erg3:
         wm.print() 
 
         wm.print_score("TATAAA")
-
         wm.print_score("GATAAA")
-
         wm.print_score("TAATAA")
 
 
