@@ -1,13 +1,8 @@
-from UnitsOfWork import erg3
-from matrices.DynamicProgrammingMatrix import DynamicProgrammingMatrix
+from UnitsOfWork.DynamicProgrammingMatrixUnitOfWork import DynamicProgrammingMatrixUnitOfWork
+from UnitsOfWork.PositionWeightMatrixUnitOfWork import PositionWeightMatrixUnitOfWork
 
-ergasia = erg3() 
-ergasia.go()
+dpm_work = DynamicProgrammingMatrixUnitOfWork()
+dpm_work.go()
 
-xSeq = "ATAG"
-ySeq = "TTCG"
-
-dm = DynamicProgrammingMatrix(xSeq, ySeq, 1)
-dm.update()
-dm.print_matrix()
-dm.print_origins_of(4,4)
+pwm_work = PositionWeightMatrixUnitOfWork()
+pwm_work.go()
