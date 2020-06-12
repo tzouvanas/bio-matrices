@@ -69,6 +69,8 @@ class PositionWeightMatrix:
             index = self.__nucleotide_to_index(nucleotide)
             score = score + self.position_weight_matrix[index][columnIndex]
             columnIndex = columnIndex + 1
+        
+        return score
 
     def print_score(self, sequence):
         print(sequence, ' : ', self.score(sequence))
