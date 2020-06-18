@@ -25,14 +25,12 @@ class DynamicProgrammingMatrixUnitOfWork:
         xSeq = "HEAGAWGHEE"
         ySeq = "PAWHEAE"
         dm = DynamicProgrammingMatrix(xSeq, ySeq, NeedlemanWunschMethod(6, blosum50))
-        dm.setSubstitutionMatrix(blosum50)
         dm.update()
         dm.print_matrix()
         dm.print_origins_of(7, 10)
 
         # local alignment example
         dm = DynamicProgrammingMatrix(xSeq, ySeq, SmithWatermanMethod(6, blosum50))
-        dm.setSubstitutionMatrix(blosum50)
         dm.update()
         dm.print_matrix()
         dm.print_origins_of(7, 10)

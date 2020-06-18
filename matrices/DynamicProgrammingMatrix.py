@@ -13,8 +13,6 @@ class DynamicProgrammingMatrix:
 
         self.method = method
 
-        self.substitutionMatrix = None
-
         self.nrOfRows = len(ySeq)+1
         self.nrOfColumns = len(xSeq)+1
 
@@ -49,13 +47,13 @@ class DynamicProgrammingMatrix:
         x = self.xSeq[j-1]
         y = self.ySeq[i-1]
 
-        if self.substitutionMatrix is None:
+        if self.method.lookupTable is None:
             if x == y:
                 return 1
             return -1
 
         # go with scores in replacement matrix. Symmetric matrix is assumed !
-        lookupWrapper = LookupWrapper(self.substitutionMatrix)
+        lookupWrapper = LookupWrapper(self.method.lookupTable)
         value = lookupWrapper.get(self.xSeq[j-1], self.ySeq[i-1])
         
         return value
@@ -142,9 +140,6 @@ class DynamicProgrammingMatrix:
 
             if (nextNode != (0,0)):
                 self.__calculate_permutated_origin_path_of(nextNode[0], nextNode[1])
-
-    def setSubstitutionMatrix(self, substitutionMatrix):
-        self.substitutionMatrix = substitutionMatrix
 
     def update(self):
         
