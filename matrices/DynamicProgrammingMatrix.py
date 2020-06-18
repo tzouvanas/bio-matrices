@@ -12,6 +12,7 @@ class DynamicProgrammingMatrix:
         self.ySeq = list(ySeq)
 
         self.method = method
+
         self.substitutionMatrix = None
 
         self.nrOfRows = len(ySeq)+1
@@ -45,8 +46,11 @@ class DynamicProgrammingMatrix:
 
     def __calculateMatchingScore(self, i, j):
 
+        x = self.xSeq[j-1]
+        y = self.ySeq[i-1]
+
         if self.substitutionMatrix is None:
-            if self.xSeq[j-1] == self.ySeq[i-1]:
+            if x == y:
                 return 1
             return -1
 

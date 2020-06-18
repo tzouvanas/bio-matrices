@@ -11,7 +11,7 @@ class TestUnitOfWork:
         # global alignment example for nucleotides
         xSeq = "GTGCCT"
         ySeq = "GATCCA"
-        dm = DynamicProgrammingMatrix(xSeq, ySeq, NeedlemanWunschMethod(4))
+        dm = DynamicProgrammingMatrix(xSeq, ySeq, NeedlemanWunschMethod(4, None))
         dm.update()
         dm.print_matrix()
         dm.print_origins_of(6, 6)
