@@ -7,15 +7,11 @@ from matrices.lookupTables.LookupWrapper import LookupWrapper
 class DynamicProgrammingMatrix:
 
     def __init__(self, xSeq, ySeq, method:AlignmentMethod):
-
         self.xSeq = list(xSeq)
         self.ySeq = list(ySeq)
-
         self.method = method
-
         self.nrOfRows = len(ySeq)+1
         self.nrOfColumns = len(xSeq)+1
-
         self.origins = {}
 
     # initialize matrix values
@@ -27,18 +23,14 @@ class DynamicProgrammingMatrix:
     # initialize first row
     def __init__first_row(self):
         for j in range(1, self.nrOfColumns):
-
             self.m[0][j] = self.method.init(j)
-            
             # init first row origings
             self.origins[0,j] = [(0, j-1)]
 
     # initialize first column
     def __init__first_column(self):
         for i in range(1, self.nrOfRows):
-
             self.m[i][0] = self.method.init(i)
-
             # init first column origings
             self.origins[i,0] = [(i-1, 0)]
 
