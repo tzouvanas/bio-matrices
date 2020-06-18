@@ -4,19 +4,25 @@ class AlignmentMethod:
     def __init__(self,d, lookupTable:dict):
         self.d = d
         self.lookupTable = lookupTable
-    
-    def calculate(self, upleft, left, up, x, y):
-        raise Exception("Abstract method") 
-
+ 
     def init(self):
         raise Exception("Abstract method")
 
-    def adjustValues(self, upleft, left, up, x, y):
-        self.upleft = upleft
-        self.left = left
-        self.up = up
+    def calculate(self, upleft, left, up, x, y):
+        
+        upleftScore = upleft + self.matchingScore(x, y)
+        leftScore = left - self.d
+        upScore = up - self.d
 
-    def calculateMatchingScore(self, x, y):
+        maxResult = self.maxFormula(upleftScore, leftScore, upScore)
+        maxIndex = self.resolveMaxIndeces(maxResult, upleftScore, leftScore, upScore)
+
+        return (maxResult, maxIndex)
+    
+    def maxFormula(self, upleftScore, leftScore, upScore):
+        return -1
+
+    def matchingScore(self, x, y):
         
         if self.lookupTable is None:
             if x == y:
@@ -27,4 +33,19 @@ class AlignmentMethod:
         value = lookupWrapper.get(x, y)
         
         return value
+
+    def resolveMaxIndeces(self, maxResult, upleftScore, leftScore, upScore):
+
+        maxIndeces = []
+
+        if  (maxResult == upleftScore):
+            maxIndeces.append(1)
+
+        if (maxResult == leftScore):
+            maxIndeces.append(2)
+
+        if (maxResult == upScore):
+            maxIndeces.append(3)
+
+        return maxIndeces
 

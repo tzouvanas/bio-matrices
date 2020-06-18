@@ -39,28 +39,28 @@ class DynamicProgrammingMatrix:
         x = self.xSeq[j-1]
         y = self.ySeq[i-1]
 
-        upleft = self.m[i-1][j-1] + self.method.calculateMatchingScore(x, y)
-        left = self.m[i][j-1] - self.method.d
-        up = self.m[i-1][j] - self.method.d
+        upleft = self.m[i-1][j-1]
+        left = self.m[i][j-1]
+        up = self.m[i-1][j]
 
-        maxResult = self.method.calculate(upleft, left, up, x, y)
-        self.__register_origin(upleft, left, up, maxResult, i, j)
+        (maxResult, maxIndeces) = self.method.calculate(upleft, left, up, x, y)
+        self.__register_origin(maxIndeces, maxResult, i, j)
 
         return maxResult
 
     # records originator / originators of cell's max value
-    def __register_origin(self, upleft, left, up, maxValue, i, j):
+    def __register_origin(self, maxIndeces, maxValue, i, j):
 
         origin = []
-
-        if  (maxValue == upleft):
+    
+        if (any((maxIndex == 1 for maxIndex in maxIndeces))):
             origin.append((i-1,j-1))
 
-        if (maxValue == up):
-            origin.append((i-1,j))
-
-        if (maxValue == left):
+        if (any((maxIndex == 2 for maxIndex in maxIndeces))):
             origin.append((i,j-1))
+
+        if (any((maxIndex == 3 for maxIndex in maxIndeces))):
+            origin.append((i-1,j))
         
         self.origins[(i, j)] = origin
 
