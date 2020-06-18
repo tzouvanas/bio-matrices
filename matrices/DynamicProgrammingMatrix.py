@@ -1,6 +1,7 @@
 import numpy as np
 from Math import MathTools
 from matrices.methods.AlignmentMethod import AlignmentMethod
+from matrices.lookupTables.LookupWrapper import LookupWrapper
 
 
 class DynamicProgrammingMatrix:
@@ -50,10 +51,9 @@ class DynamicProgrammingMatrix:
             return -1
 
         # go with scores in replacement matrix. Symmetric matrix is assumed !
-        value = self.substitutionMatrix.get((self.xSeq[j-1], self.ySeq[i-1]))
-        if value is None:
-            return self.substitutionMatrix[self.ySeq[i-1], self.xSeq[j-1]]
-
+        lookupWrapper = LookupWrapper(self.substitutionMatrix)
+        value = lookupWrapper.get(self.xSeq[j-1], self.ySeq[i-1])
+        
         return value
 
     def __calculateMaxValueForCell(self, i, j):
