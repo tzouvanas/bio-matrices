@@ -5,11 +5,16 @@ class AlignmentMethod:
         self.d = d
         self.lookupTable = lookupTable
     
-    def calculate(self, upleft, left, up):
+    def calculate(self, upleft, left, up, x, y):
         raise Exception("Abstract method") 
 
     def init(self):
         raise Exception("Abstract method")
+
+    def adjustValues(self, upleft, left, up, x, y):
+        self.upleft = upleft
+        self.left = left
+        self.up = up
 
     def calculateMatchingScore(self, x, y):
         

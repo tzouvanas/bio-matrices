@@ -51,7 +51,7 @@ class DynamicProgrammingMatrix:
         left = self.m[i][j-1] - self.method.d
         up = self.m[i-1][j] - self.method.d
 
-        maxResult = self.method.calculate(upleft, left, up)
+        maxResult = self.method.calculate(upleft, left, up, x, y)
         self.__register_origin(upleft, left, up, maxResult, i, j)
 
         return maxResult
