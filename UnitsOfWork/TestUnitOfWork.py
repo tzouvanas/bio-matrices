@@ -2,7 +2,7 @@ import numpy as np
 from matrices.DynamicProgrammingMatrix import DynamicProgrammingMatrix
 from matrices.PositionWeightMatrix import PositionWeightMatrix
 from matrices.methods.NeedlemanWunschMethod import NeedlemanWunschMethod
-from Blosum import blosum50
+from matrices.lookupTables.Blosum import blosum50
 
 class TestUnitOfWork:
 
