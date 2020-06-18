@@ -2,6 +2,8 @@ import numpy as np
 from matrices.DynamicProgrammingMatrix import DynamicProgrammingMatrix
 from matrices.PositionWeightMatrix import PositionWeightMatrix
 from Blosum import blosum50
+from matrices.methods.NeedlemanWunschMethod import NeedlemanWunschMethod
+from matrices.methods.SmithWatermanMethod import SmithWatermanMethod
 
 class DynamicProgrammingMatrixUnitOfWork:
 
@@ -14,7 +16,7 @@ class DynamicProgrammingMatrixUnitOfWork:
         # global alignment example for nucleotides
         xSeq = "GAATTC"
         ySeq = "GATTA"
-        dm = DynamicProgrammingMatrix(xSeq, ySeq, 2)
+        dm = DynamicProgrammingMatrix(xSeq, ySeq, NeedlemanWunschMethod(2))
         dm.update()
         dm.print_matrix()
         dm.print_origins_of(5, 6)
@@ -22,14 +24,14 @@ class DynamicProgrammingMatrixUnitOfWork:
         # global alignment example for proteins
         xSeq = "HEAGAWGHEE"
         ySeq = "PAWHEAE"
-        dm = DynamicProgrammingMatrix(xSeq, ySeq, 6)
+        dm = DynamicProgrammingMatrix(xSeq, ySeq, NeedlemanWunschMethod(6))
         dm.setSubstitutionMatrix(blosum50)
         dm.update()
         dm.print_matrix()
         dm.print_origins_of(7, 10)
 
         # local alignment example
-        dm = DynamicProgrammingMatrix(xSeq, ySeq, 6, True)
+        dm = DynamicProgrammingMatrix(xSeq, ySeq, SmithWatermanMethod(6))
         dm.setSubstitutionMatrix(blosum50)
         dm.update()
         dm.print_matrix()

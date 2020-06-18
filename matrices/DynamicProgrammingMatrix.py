@@ -1,15 +1,16 @@
 import numpy as np
 from Math import MathTools
+from matrices.methods.AlignmentMethod import AlignmentMethod
+
 
 class DynamicProgrammingMatrix:
 
-    def __init__(self, xSeq, ySeq, d, localAlighment=False):
+    def __init__(self, xSeq, ySeq, method:AlignmentMethod):
 
         self.xSeq = list(xSeq)
         self.ySeq = list(ySeq)
-        self.d = d
 
-        self.localAlighment = localAlighment
+        self.method = method
         self.substitutionMatrix = None
 
         self.nrOfRows = len(ySeq)+1
@@ -26,21 +27,17 @@ class DynamicProgrammingMatrix:
     # initialize first row
     def __init__first_row(self):
         for j in range(1, self.nrOfColumns):
-            if self.localAlighment == True:
-                self.m[0][j] = 0
-            else:
-                self.m[0][j] = -j*self.d
 
+            self.m[0][j] = self.method.init(j)
+            
             # init first row origings
             self.origins[0,j] = [(0, j-1)]
 
     # initialize first column
     def __init__first_column(self):
         for i in range(1, self.nrOfRows):
-            if self.localAlighment == True:
-                self.m[i][0] = 0
-            else:
-                self.m[i][0] = -i*self.d
+
+            self.m[i][0] = self.method.init(i)
 
             # init first column origings
             self.origins[i,0] = [(i-1, 0)]
@@ -62,14 +59,10 @@ class DynamicProgrammingMatrix:
     def __calculateMaxValueForCell(self, i, j):
 
         upleft = self.m[i-1][j-1] + self.__calculateMatchingScore(i, j)
-        left = self.m[i][j-1] - self.d
-        up = self.m[i-1][j] - self.d
+        left = self.m[i][j-1] - self.method.d
+        up = self.m[i-1][j] - self.method.d
 
-        if self.localAlighment:
-            maxResult =  max(upleft, left, up, 0)
-        else:
-            maxResult =  max(upleft, left, up)
-
+        maxResult = self.method.calculate(upleft, left, up)
         self.__register_origin(upleft, left, up, maxResult, i, j)
 
         return maxResult
