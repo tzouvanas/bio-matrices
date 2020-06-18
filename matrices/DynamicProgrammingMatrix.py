@@ -52,7 +52,6 @@ class DynamicProgrammingMatrix:
                 return 1
             return -1
 
-        # go with scores in replacement matrix. Symmetric matrix is assumed !
         lookupWrapper = LookupWrapper(self.method.lookupTable)
         value = lookupWrapper.get(self.xSeq[j-1], self.ySeq[i-1])
         
