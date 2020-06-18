@@ -42,24 +42,12 @@ class DynamicProgrammingMatrix:
             # init first column origings
             self.origins[i,0] = [(i-1, 0)]
 
-    def __calculateMatchingScore(self, i, j):
+    def __calculateMaxValueForCell(self, i, j):
 
         x = self.xSeq[j-1]
         y = self.ySeq[i-1]
 
-        if self.method.lookupTable is None:
-            if x == y:
-                return 1
-            return -1
-
-        lookupWrapper = LookupWrapper(self.method.lookupTable)
-        value = lookupWrapper.get(self.xSeq[j-1], self.ySeq[i-1])
-        
-        return value
-
-    def __calculateMaxValueForCell(self, i, j):
-
-        upleft = self.m[i-1][j-1] + self.__calculateMatchingScore(i, j)
+        upleft = self.m[i-1][j-1] + self.method.calculateMatchingScore(x, y)
         left = self.m[i][j-1] - self.method.d
         up = self.m[i-1][j] - self.method.d
 
