@@ -7,6 +7,3 @@ dpm_work.go()
 
 pwm_work = PositionWeightMatrixUnitOfWork()
 pwm_work.go()
-
-test_work = TestUnitOfWork()
-test_work.go()

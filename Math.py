@@ -3,6 +3,28 @@ import numpy as np
 class MathTools:
 
     @staticmethod
+    def unique_arrays(listOfarrays: list):
+        
+        uniqueList = []
+
+        if len(listOfarrays) == 0:
+            return uniqueList
+
+        uniqueList.append(listOfarrays[0])
+        
+        for i in range(1, len(listOfarrays)):
+            
+            exists = False
+            for j in range(0, len(uniqueList)):
+                if np.array_equal(listOfarrays[i], uniqueList[j]):
+                    exists = True
+            
+            if exists == False:
+                uniqueList.append(listOfarrays[i])
+
+        return uniqueList
+
+    @staticmethod
     def cartesian_of_two(arrayA: list, arrayB: list):
 
         result = []

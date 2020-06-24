@@ -166,9 +166,10 @@ class DynamicProgrammingMatrix:
             self.all_origin_paths.append(self.permutation_origin_path)
             self.permutation_origin_path = []
 
+
         print('Paths:')
-        for the_path_to_righteousness in self.all_origin_paths:
-            print(the_path_to_righteousness)
+        for uniqueArray in MathTools.unique_arrays(self.all_origin_paths):
+            print(uniqueArray)
         
         print('\n')
         
