@@ -14,4 +14,4 @@ class TestUnitOfWork:
         dm = DynamicProgrammingMatrix(xSeq, ySeq, NeedlemanWunschMethod(4, None))
         dm.update()
         dm.print_matrix()
-        dm.print_origins_of(6, 6)
+        dm.print_origins_of_cell(6, 6)

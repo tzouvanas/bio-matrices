@@ -74,7 +74,6 @@ class PositionWeightMatrix:
 
     def print_score(self, sequence):
         print(sequence, ' : ', self.score(sequence))
-        print('\n')
 
     def print(self):    
         print('Frequencies:')

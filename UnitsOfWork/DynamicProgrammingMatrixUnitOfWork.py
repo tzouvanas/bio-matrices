@@ -19,7 +19,7 @@ class DynamicProgrammingMatrixUnitOfWork:
         dm = DynamicProgrammingMatrix(xSeq, ySeq, NeedlemanWunschMethod(2, None))
         dm.update()
         dm.print_matrix()
-        dm.print_origins_of(5, 6)
+        dm.print_origins_of_cell(5, 6)
 
         # global alignment example for proteins
         xSeq = "HEAGAWGHEE"
@@ -27,10 +27,10 @@ class DynamicProgrammingMatrixUnitOfWork:
         dm = DynamicProgrammingMatrix(xSeq, ySeq, NeedlemanWunschMethod(6, blosum50))
         dm.update()
         dm.print_matrix()
-        dm.print_origins_of(7, 10)
+        dm.print_origins_of_cell(7, 10)
 
         # local alignment example
         dm = DynamicProgrammingMatrix(xSeq, ySeq, SmithWatermanMethod(6, blosum50))
         dm.update()
         dm.print_matrix()
-        dm.print_origins_of(7, 10)
+        dm.print_origins_of_cell(7, 10)

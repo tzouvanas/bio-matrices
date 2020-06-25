@@ -128,12 +128,8 @@ class DynamicProgrammingMatrix:
             for j in range(1, self.nrOfColumns):
                 self.m[i][j] = self.__calculateMaxValueForCell(i, j)
 
-    def print_matrix(self):
-        print('Dynamic Programming Matrix:')
-        print(self.m)
-        print('\n')
-
-    def find_origins_of(self, i, j):
+    
+    def find_origins_of_cell(self, i, j):
 
         # find cells that cause permutations
         self.__permutationCells = []
@@ -169,11 +165,14 @@ class DynamicProgrammingMatrix:
         return MathTools.unique_arrays(self.all_origin_paths)
         
 
-    def print_origins_of(self, i, j):
+    def print_origins_of_cell(self, i, j):
         
         print('Paths:')
-        for uniqueArray in self.find_origins_of(i,j):
+        for uniqueArray in self.find_origins_of_cell(i,j):
             print(uniqueArray)
-        
-        print('\n')
+    
+    def print_matrix(self):
+        print('Dynamic Programming Matrix:')
+        print(self.m)
+
         
