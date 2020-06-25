@@ -133,8 +133,8 @@ class DynamicProgrammingMatrix:
         print(self.m)
         print('\n')
 
-    def print_origins_of(self, i, j):
-        
+    def find_origins_of(self, i, j):
+
         # find cells that cause permutations
         self.__permutationCells = []
         self.__find_permutations_of_cell(i, j)
@@ -166,9 +166,13 @@ class DynamicProgrammingMatrix:
             self.all_origin_paths.append(self.permutation_origin_path)
             self.permutation_origin_path = []
 
+        return MathTools.unique_arrays(self.all_origin_paths)
+        
 
+    def print_origins_of(self, i, j):
+        
         print('Paths:')
-        for uniqueArray in MathTools.unique_arrays(self.all_origin_paths):
+        for uniqueArray in self.find_origins_of(i,j):
             print(uniqueArray)
         
         print('\n')
